@@ -1,6 +1,5 @@
-from django.db import models
 from django.contrib.auth.models import User
-
+from django.db import models
 
 class Task(models.Model):
     STATUS_CHOICES = [
@@ -14,16 +13,12 @@ class Task(models.Model):
     opis = models.TextField()
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='Nowy')
     date = models.DateTimeField(auto_now_add=True)
-    time = models.DateTimeField(auto_now=True)
-    przypisany_uzytkownik = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, blank=True)
+    przypisany_uzytkownik = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return self.nazwa
 
-class User(models.Model):
-    id = models.AutoField(primary_key=True)
-    login = models.CharField(max_length=255)
-    password = models.CharField(max_length=255)
+
 
 class Old_Task(models.Model):
     STATUS_CHOICES = [
