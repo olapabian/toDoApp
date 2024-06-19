@@ -12,6 +12,7 @@ DATABASES = {
 }
 
 Następnie przeprowadzić migracje bazy danych poleceniem: python manage.py migrate 
+Polecenie storzy tabele i uzupełni tabele auth_user przykładowymi danymi.
 
 W pliku toDoAppDjango.postman_collection.json znajduje się kolekcja endpointów wykorzystywanych przez serwer z przykładami użycia (przykłady ścieżek url, parametrów i ciał zapytań)
 Kolekcje można zaimportować w Postmanie.
