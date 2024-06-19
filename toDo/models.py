@@ -10,7 +10,7 @@ class Task(models.Model):
 
     id = models.AutoField(primary_key=True)
     nazwa = models.CharField(max_length=255)
-    opis = models.TextField()
+    opis = models.CharField()
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='Nowy')
     date = models.DateTimeField(auto_now_add=True)
     przypisany_uzytkownik = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
