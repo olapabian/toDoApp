@@ -12,7 +12,7 @@ DATABASES = {
 }
 
 Następnie przeprowadzić migracje bazy danych poleceniem: python manage.py migrate 
-Polecenie storzy tabele i uzupełni tabele auth_user przykładowymi danymi.
+Polecenie stworzy tabele i uzupełni tabele auth_user przykładowymi danymi.
 
 Kolejnym krokiem jest uruchomienie serwera komendą 
 python manage.py runserver
