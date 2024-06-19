@@ -13,5 +13,5 @@ DATABASES = {
 
 Następnie przeprowadzić migracje bazy danych poleceniem: python manage.py migrate 
 
-W pliku toDoAppDjango.postman_collection.json znajduje się kolekcja endpointów wykorzystywanych przez serwer z przykładami użycia (w body, a dla endpointów filtrujących ustawione parametry)
+W pliku toDoAppDjango.postman_collection.json znajduje się kolekcja endpointów wykorzystywanych przez serwer z przykładami użycia (przykłady ścieżek url, parametrów i ciał zapytań)
 Kolekcje można zaimportować w Postmanie.
