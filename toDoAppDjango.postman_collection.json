@@ -1,0 +1,250 @@
+{
+	"info": {
+		"_postman_id": "feb53e04-6f65-4bbb-b9d3-132e3bba3441",
+		"name": "toDoAppDjango",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32061217"
+	},
+	"item": [
+		{
+			"name": "create_task",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-CSRFToken",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "//towrzenie taska \r\n//przypisany_uzytkownik jest opcjonalny\r\n//status jest opcjonalny (jak nie podamy nic mamy domyślnie \"Nowy\")\r\n//opis jest opcjonalny (jak nie podamy nic mamy domyślnie \"\")\r\n{\r\n    \"nazwa\": \"Nowe zadanie23\",\r\n    \"status\": \"W toku\",\r\n    \"przypisany_uzytkownik\": 3,\r\n    \"opis\": \"Opis nowego zadania\"\r\n}\r\n//Zwraca tego samego jsona, a w przypadku nie wypelnienia niektorych pol znajdują się tam domyślne wartości\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/task/create/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"task",
+						"create",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update_status",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "//zmiana tylko statusu, który jest wymagany\r\n{\r\n    \"status\": \"W toku\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/task/1/update_status/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"task",
+						"1",
+						"update_status",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update_task",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "//etytowanie zadania wszystkie pola opcjonalne\r\n{\r\n    \"nazwa\": \"Nowe z\",\r\n    \"opis\": \"Opis nowego zadani''''''''''a\",\r\n    \"status\": \"Rozwiązany\",\r\n    \"przypisany_uzytkownik\": 3 \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/task/1/update_task/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"task",
+						"1",
+						"update_task",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_tasks_with_filter",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/task/get_tasks/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"task",
+						"get_tasks",
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "3",
+							"disabled": true
+						},
+						{
+							"key": "nazwa",
+							"value": "naz",
+							"disabled": true
+						},
+						{
+							"key": "opis",
+							"value": "op",
+							"disabled": true
+						},
+						{
+							"key": "status",
+							"value": "Nowy",
+							"disabled": true
+						},
+						{
+							"key": "uzytkownik",
+							"value": "2",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_old_tasks_with_filter",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/task/get_old_tasks/?task_id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"task",
+						"get_old_tasks",
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "3",
+							"disabled": true
+						},
+						{
+							"key": "nazwa",
+							"value": "naz",
+							"disabled": true
+						},
+						{
+							"key": "opis",
+							"value": "op",
+							"disabled": true
+						},
+						{
+							"key": "status",
+							"value": "Nowy",
+							"disabled": true
+						},
+						{
+							"key": "uzytkownik",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "task_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_task_by_id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/task/get_task_by_id/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"task",
+						"get_task_by_id",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete_task_by_id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/task/delete_task_by_id/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"task",
+						"delete_task_by_id",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
