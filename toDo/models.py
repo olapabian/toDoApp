@@ -32,8 +32,16 @@ class Old_Task(models.Model):
     opis = models.TextField()
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='Nowy')
     date = models.DateTimeField(auto_now_add=True)
-    time = models.DateTimeField(auto_now=True)
     przypisany_uzytkownik = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return self.nazwa
+def save_old_task_state(task):
+    Old_Task.objects.create(
+        task=task,
+        nazwa=task.nazwa,
+        opis=task.opis,
+        status=task.status,
+        date=task.date,
+        przypisany_uzytkownik=task.przypisany_uzytkownik
+    )

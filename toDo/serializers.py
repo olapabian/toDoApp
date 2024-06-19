@@ -3,7 +3,7 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
-from .models import Task
+from .models import Task, Old_Task
 
 
 class CreateTaskSerializer(serializers.ModelSerializer):
@@ -27,7 +27,7 @@ class UpdateStatusSerializer(serializers.ModelSerializer):
         }
 
 
-class UpdateTaskSerializer(serializers.ModelSerializer):
+class OptionalTaskSerializer(serializers.ModelSerializer):
     przypisany_uzytkownik = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), required=False,
                                                                allow_null=True)
     class Meta:
@@ -38,3 +38,12 @@ class UpdateTaskSerializer(serializers.ModelSerializer):
             'status': {'required': False},
             'opis': {'required': False}
         }
+
+class TasksSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Task
+        fields = ['id', 'nazwa', 'opis', 'status', 'date', 'przypisany_uzytkownik']
+class OldTasksSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Old_Task
+        fields = ['id', 'nazwa', 'opis', 'status', 'date', 'przypisany_uzytkownik','task_id']
